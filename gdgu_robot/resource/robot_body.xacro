@@ -1,0 +1,295 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="robot_inertia.xacro"/>
+    
+
+    <material name="white">
+        <color rgba = "1 1 1 1" />
+    </material>
+
+     <material name="grey">
+        <color rgba = "0.25 0.25 0.25 1" />
+    </material>
+
+     <material name="red">
+        <color rgba = "1 0 0 1" />
+    </material>
+
+    <!--base link-->  
+    <link name="base_link">
+       
+    </link>
+
+    <!-- chassis_joint -->
+    <joint name="chassis_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="chassis_link"/>
+        <origin xyz="-0.1 0.0 0.0" rpy="0.0 0.0 0.0"/>       
+    </joint>
+
+    <!-- chassis_link -->
+    <link name="chassis_link">
+        <visual>
+            <origin xyz="0.145 0.0 0.002" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.35 0.29 0.002"/>
+            </geometry>
+            <material name = "white"/>
+        </visual>
+        <collision>
+            <origin xyz="0.145 0.0 0.002" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.35 0.29 0.002"/>
+            </geometry>  
+        </collision>
+        <xacro:inertial_box mass = "1" x = "0.35" y = "29" z = "0.002">
+            <origin xyz="0.145 0.0 0.002" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <!--wheels-->
+    <joint name="left_wheel" type="continuous">
+        <parent link="base_link"/>
+        <child link="lfw_link"/>             
+        <origin xyz = "0.0 0.145 0.0" rpy = "-$(eval pi/2) 0.0 0.0" />
+        <axis xyz="0.0 0.0 1.0"/>       
+    </joint>
+
+    <link name="lfw_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius = "0.05" length = "0.02"/>
+            </geometry>
+            <material name = "grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius = "0.05" length = "0.02"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass = "0.2" radius = "0.05" length = "0.02">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <joint name="right_wheel" type="continuous">
+        <parent link="base_link"/>
+        <child link="rfw_link"/>             
+        <origin xyz = "0.0 -0.145 0.0" rpy = "$(eval pi/2) 0.0 0.0" />
+        <axis xyz="0.0 0.0 -1.0"/>       
+    </joint>
+
+    <link name="rfw_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius = "0.05" length = "0.02"/>
+            </geometry>
+            <material name = "grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius = "0.05" length = "0.02"/>
+            </geometry>  
+        </collision>
+        <xacro:inertial_cylinder mass = "0.2" radius = "0.05" length = "0.02">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!--castor wheels-->
+
+    <joint name="castor_wheel1" type="continuous">
+        <parent link="base_link"/>
+        <child link="cwl1_link"/>
+        <origin xyz = "0.16 0.115 -0.04" rpy = "0 0 0"/>
+        <axis xyz="1.0 1.0 1.0"/>  
+    </joint>
+
+    <link name="cwl1_link">
+        <visual>
+            <geometry>
+                <sphere radius = "0.01"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius = "0.01"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_sphere mass = "0.1" radius = "0.01">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <joint name="castor_wheel2" type="continuous">
+        <parent link="base_link"/>
+        <child link="cwl2_link"/>
+        <origin xyz = "0.16 -0.115 -0.04" rpy = "0 0 0"/>
+        <axis xyz="1.0 1.0 1.0"/>
+    </joint>
+
+    <link name="cwl2_link">
+        <visual>
+            <geometry>
+                <sphere radius = "0.01"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius = "0.01"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_sphere mass = "0.1" radius = "0.01">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <joint name="castor_wheel3" type="continuous">
+        <parent link="base_link"/>
+        <child link="cwl3_link"/>
+        <origin xyz = "-0.1 0.115 -0.04" rpy = "0 0 0"/>
+        <axis xyz="1.0 1.0 1.0"/>
+    </joint>
+
+    <link name="cwl3_link">
+        <visual>
+            <geometry>
+                <sphere radius = "0.01"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius = "0.01"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_sphere mass = "0.1" radius = "0.01">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <joint name="castor_wheel4" type="continuous">
+        <parent link="base_link"/>
+        <child link="cwl4_link"/>
+        <origin xyz = "-0.1 -0.115 -0.04" rpy = "0 0 0"/>
+        <axis xyz="1.0 1.0 1.0"/>
+    </joint>
+
+    <link name="cwl4_link">
+        <visual>
+            <geometry>
+                <sphere radius = "0.01"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius = "0.01"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_sphere mass = "0.1" radius = "0.01">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_sphere> 
+    </link>
+
+    <!--connectors for castor wheels-->
+
+    <joint name="connector_cw1_joint" type="fixed">
+        <parent link="chassis_link"/>
+        <child link="connector_cw1_link"/>
+        <origin xyz="0.26 0.115 -0.02" rpy="0 0 0"/>
+    </joint>
+    <link name="connector_cw1_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.005" length="0.04"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.005" length="0.04"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass = "0.1" radius = "0.005" length = "0.04">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- Connector for castor wheel 2 -->
+    <joint name="connector_cw2_joint" type="fixed">
+        <parent link="chassis_link"/>
+        <child link="connector_cw2_link"/>
+        <origin xyz="0.26 -0.115 -0.02" rpy="0 0 0"/>
+    </joint>
+    <link name="connector_cw2_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.005" length="0.04"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.005" length="0.04"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass = "0.1" radius = "0.005" length = "0.04">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- Connector for castor wheel 3 -->
+    <joint name="connector_cw3_joint" type="fixed">
+        <parent link="chassis_link"/>
+        <child link="connector_cw3_link"/>
+        <origin xyz="-0.0 0.115 -0.02" rpy="0 0 0"/>
+    </joint>
+    <link name="connector_cw3_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.005" length="0.04"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.005" length="0.04"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass = "0.1" radius = "0.005" length = "0.04">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- Connector for castor wheel 4 -->
+    <joint name="connector_cw4_joint" type="fixed">
+        <parent link="chassis_link"/>
+        <child link="connector_cw4_link"/>
+        <origin xyz="-0.0 -0.115 -0.02" rpy="0 0 0"/>
+    </joint>
+    <link name="connector_cw4_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.005" length="0.04"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.005" length="0.04"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass = "0.1" radius = "0.005" length = "0.04">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+</robot>
