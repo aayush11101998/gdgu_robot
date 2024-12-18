@@ -31,14 +31,14 @@
     <!-- chassis_link -->
     <link name="chassis_link">
         <visual>
-            <origin xyz="0.145 0.0 0.002" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.145 0.0 0.044" rpy="0.0 0.0 0.0"/>
             <geometry>
                 <box size="0.35 0.29 0.002"/>
             </geometry>
             <material name = "white"/>
         </visual>
         <collision>
-            <origin xyz="0.145 0.0 0.002" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.145 0.0 0.044" rpy="0.0 0.0 0.0"/>
             <geometry>
                 <box size="0.35 0.29 0.002"/>
             </geometry>  
@@ -52,7 +52,7 @@
     <joint name="left_wheel" type="continuous">
         <parent link="base_link"/>
         <child link="lfw_link"/>             
-        <origin xyz = "0.0 0.145 0.0" rpy = "-$(eval pi/2) 0.0 0.0" />
+        <origin xyz = "0.0 0.145 0.05" rpy = "-$(eval pi/2) 0.0 0.0" />
         <axis xyz="0.0 0.0 1.0"/>       
     </joint>
 
@@ -78,7 +78,7 @@
     <joint name="right_wheel" type="continuous">
         <parent link="base_link"/>
         <child link="rfw_link"/>             
-        <origin xyz = "0.0 -0.145 0.0" rpy = "$(eval pi/2) 0.0 0.0" />
+        <origin xyz = "0.0 -0.145 0.05" rpy = "$(eval pi/2) 0.0 0.0" />
         <axis xyz="0.0 0.0 -1.0"/>       
     </joint>
 
@@ -106,7 +106,7 @@
     <joint name="castor_wheel1" type="continuous">
         <parent link="base_link"/>
         <child link="cwl1_link"/>
-        <origin xyz = "0.16 0.115 -0.04" rpy = "0 0 0"/>
+        <origin xyz = "0.16 0.115 0.01" rpy = "0 0 0"/>
         <axis xyz="1.0 1.0 1.0"/>  
     </joint>
 
@@ -130,7 +130,7 @@
     <joint name="castor_wheel2" type="continuous">
         <parent link="base_link"/>
         <child link="cwl2_link"/>
-        <origin xyz = "0.16 -0.115 -0.04" rpy = "0 0 0"/>
+        <origin xyz = "0.16 -0.115 0.01" rpy = "0 0 0"/>
         <axis xyz="1.0 1.0 1.0"/>
     </joint>
 
@@ -154,7 +154,7 @@
     <joint name="castor_wheel3" type="continuous">
         <parent link="base_link"/>
         <child link="cwl3_link"/>
-        <origin xyz = "-0.1 0.115 -0.04" rpy = "0 0 0"/>
+        <origin xyz = "-0.1 0.115 0.01" rpy = "0 0 0"/>
         <axis xyz="1.0 1.0 1.0"/>
     </joint>
 
@@ -178,7 +178,7 @@
     <joint name="castor_wheel4" type="continuous">
         <parent link="base_link"/>
         <child link="cwl4_link"/>
-        <origin xyz = "-0.1 -0.115 -0.04" rpy = "0 0 0"/>
+        <origin xyz = "-0.1 -0.115 0.01" rpy = "0 0 0"/>
         <axis xyz="1.0 1.0 1.0"/>
     </joint>
 
@@ -204,7 +204,7 @@
     <joint name="connector_cw1_joint" type="fixed">
         <parent link="chassis_link"/>
         <child link="connector_cw1_link"/>
-        <origin xyz="0.26 0.115 -0.02" rpy="0 0 0"/>
+        <origin xyz="0.26 0.115 0.022" rpy="0 0 0"/>
     </joint>
     <link name="connector_cw1_link">
         <visual>
@@ -227,7 +227,7 @@
     <joint name="connector_cw2_joint" type="fixed">
         <parent link="chassis_link"/>
         <child link="connector_cw2_link"/>
-        <origin xyz="0.26 -0.115 -0.02" rpy="0 0 0"/>
+        <origin xyz="0.26 -0.115 0.022" rpy="0 0 0"/>
     </joint>
     <link name="connector_cw2_link">
         <visual>
@@ -250,7 +250,7 @@
     <joint name="connector_cw3_joint" type="fixed">
         <parent link="chassis_link"/>
         <child link="connector_cw3_link"/>
-        <origin xyz="-0.0 0.115 -0.02" rpy="0 0 0"/>
+        <origin xyz="-0.0 0.115 0.022" rpy="0 0 0"/>
     </joint>
     <link name="connector_cw3_link">
         <visual>
@@ -273,7 +273,7 @@
     <joint name="connector_cw4_joint" type="fixed">
         <parent link="chassis_link"/>
         <child link="connector_cw4_link"/>
-        <origin xyz="-0.0 -0.115 -0.02" rpy="0 0 0"/>
+        <origin xyz="-0.0 -0.115 0.022" rpy="0 0 0"/>
     </joint>
     <link name="connector_cw4_link">
         <visual>

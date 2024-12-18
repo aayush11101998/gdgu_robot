@@ -5,7 +5,7 @@ package_name = 'gdgu_robot'
 
 data_files = []
 data_files.append(('share/' + package_name + '/launch', ['launch/spawn.launch.py']))
-#data_files.append(('share/' + package_name + '/launch', ['launch/gazebo_launch.py']))
+data_files.append(('share/' + package_name + '/launch', ['launch/gazebo_spawn.launch.py']))
 #data_files.append(('share/' + package_name + '/launch', ['launch/rviz_launch.py']))
 #data_files.append(('share/' + package_name + '/launch', ['launch/tb3_launch.py']))
 #data_files.append(('share/' + package_name + '/launch', ['launch/localization_launch.py']))
