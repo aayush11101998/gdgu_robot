@@ -19,7 +19,7 @@ data_files.append(('share/' + package_name + '/resource', [
 #     'resources/joint_names_Final_assembly_for gazebo.yaml',
 #     'resources/trial.yaml',
 #     'resources/nav2_namespaced_view.rviz',
-#     'resources/nav2_params.yaml',
+      'resource/gazebo_control.xacro',
       'resource/robot_body.xacro',
       'resource/gdgu_robot.urdf.xacro',
       'resource/robot_inertia.xacro'
@@ -27,13 +27,13 @@ data_files.append(('share/' + package_name + '/resource', [
 data_files.append(('share/' + package_name + '/meshes', ['meshes/chassis.STL']))
 data_files.append(('share/' + package_name + '/meshes', ['meshes/fixed_wheel.STL']))
 data_files.append(('share/' + package_name, ['package.xml']))
-#data_files.append(('share/' + package_name + '/world', ['world/urdf/Final_assembly_for_gazebo.urdf']))
+data_files.append(('share/' + package_name + '/config', ['config/gz_bridge.yaml']))
 #data_files.append(('share/' + package_name + '/world', ['world/urdf/Pipeline.sdf']))
 #data_files.append(('share/' + package_name + '/world', ['world/urdf/robot.sdf']))
 #data_files.append(('share/' + package_name + '/world', ['world/urdf/robot_new.sdf']))
 #data_files.append(('share/' + package_name + '/world', ['world/urdf/swimming robot_assembly_SLDPRT.urdf']))
 data_files.append(('share/' + package_name + '/rviz', ['rviz/gdgu_robot.rviz']))
-data_files.append(('share/' + package_name + '/world', ['world/empty.world']))
+data_files.append(('share/' + package_name + '/world', ['world/empty.sdf']))
 setup(
     name=package_name,
     version='0.0.0',
