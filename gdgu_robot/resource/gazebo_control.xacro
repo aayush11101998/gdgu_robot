@@ -2,11 +2,11 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name = "gdgu_robot">
     
     <gazebo>
-        <plugin name= "ignition::gazebo::systems::DiffDrive" filename = "libignition-gazebo-diff-drive-system.so">
+        <plugin name="ignition::gazebo::systems::DiffDrive" filename="libignition-gazebo-diff-drive-system.so">
 
             <!--Wheel Info-->
             <left_joint>left_wheel</left_joint>
-            <right_joint>right_wheel</right_joint>
+            <right_joint>right_wheel</right_joint> 
             <wheel_separation>0.31</wheel_separation>
             <wheel_radius>0.05</wheel_radius>
             
@@ -30,7 +30,7 @@
          
         </plugin>
 
-        <plugin name= "ignition::gazebo::systems::JointStatePublisher" filename= "libignition-gazebo-joint-state-publisher-system.so">
+        <plugin name="ignition::gazebo::systems::JointStatePublisher" filename="libignition-gazebo-joint-state-publisher-system.so">
             <topic>joint_states</topic>
             <joint_name>left_wheel</joint_name>
             <joint_name>right_wheel</joint_name>

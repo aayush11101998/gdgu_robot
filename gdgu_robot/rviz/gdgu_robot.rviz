@@ -8,8 +8,6 @@ Panels:
         - /Status1
         - /RobotModel1
         - /RobotModel1/Mass Properties1
-        - /TF1
-        - /TF1/Tree1
       Splitter Ratio: 0.5
     Tree Height: 549
   - Class: rviz_common/Selection
@@ -53,7 +51,7 @@ Visualization Manager:
       Value: true
     - Alpha: 1
       Class: rviz_default_plugins/RobotModel
-      Collision Enabled: true
+      Collision Enabled: false
       Description File: ""
       Description Source: Topic
       Description Topic:
@@ -69,10 +67,34 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        caster_wheel1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        caster_wheel2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        caster_wheel3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        caster_wheel4_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         chassis_link:
           Alpha: 1
           Show Axes: false
@@ -94,26 +116,6 @@ Visualization Manager:
           Show Trail: false
           Value: true
         connector_cw4_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        cwl1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        cwl2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        cwl3_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        cwl4_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -129,8 +131,8 @@ Visualization Manager:
           Show Trail: false
           Value: true
       Mass Properties:
-        Inertia: true
-        Mass: true
+        Inertia: false
+        Mass: false
       Name: RobotModel
       TF Prefix: ""
       Update Interval: 0
@@ -141,7 +143,17 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        base_footprint:
+          Value: true
         base_link:
+          Value: true
+        caster_wheel1_link:
+          Value: true
+        caster_wheel2_link:
+          Value: true
+        caster_wheel3_link:
+          Value: true
+        caster_wheel4_link:
           Value: true
         chassis_link:
           Value: true
@@ -153,46 +165,28 @@ Visualization Manager:
           Value: true
         connector_cw4_link:
           Value: true
-        cwl1_link:
-          Value: true
-        cwl2_link:
-          Value: true
-        cwl3_link:
-          Value: true
-        cwl4_link:
-          Value: true
-        lfw_link:
-          Value: true
-        rfw_link:
-          Value: true
       Marker Scale: 1
       Name: TF
-      Show Arrows: false
+      Show Arrows: true
       Show Axes: true
       Show Names: false
       Tree:
         base_link:
+          base_footprint:
+            {}
           chassis_link:
-            connector_cw1_link:
-              {}
-            connector_cw2_link:
-              {}
-            connector_cw3_link:
-              {}
-            connector_cw4_link:
-              {}
-          cwl1_link:
-            {}
-          cwl2_link:
-            {}
-          cwl3_link:
-            {}
-          cwl4_link:
-            {}
-          lfw_link:
-            {}
-          rfw_link:
-            {}
+            caster_wheel1_link:
+              connector_cw1_link:
+                {}
+            caster_wheel2_link:
+              connector_cw2_link:
+                {}
+            caster_wheel3_link:
+              connector_cw3_link:
+                {}
+            caster_wheel4_link:
+              connector_cw4_link:
+                {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -241,126 +235,26 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 0.6256626844406128
+      Distance: 1.1381654739379883
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.17264798283576965
-        Y: -0.018090713769197464
-        Z: 0.05776974931359291
+        X: 0.1819995492696762
+        Y: 0.034723687916994095
+        Z: -0.15324656665325165
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.21039848029613495
+      Pitch: 0.16039833426475525
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.1653897762298584
-    Saved:
-      - Class: rviz_default_plugins/Orbit
-        Distance: 0.7109802961349487
-        Enable Stereo Rendering:
-          Stereo Eye Separation: 0.05999999865889549
-          Stereo Focal Distance: 1
-          Swap Stereo Eyes: false
-          Value: false
-        Focal Point:
-          X: 0
-          Y: 0
-          Z: 0
-        Focal Shape Fixed Size: true
-        Focal Shape Size: 0.05000000074505806
-        Invert Z Axis: false
-        Name: Orbit
-        Near Clip Distance: 0.009999999776482582
-        Pitch: 0.17039847373962402
-        Target Frame: <Fixed Frame>
-        Value: Orbit (rviz)
-        Yaw: 4.358572006225586
-      - Class: rviz_default_plugins/Orbit
-        Distance: 0.6256626844406128
-        Enable Stereo Rendering:
-          Stereo Eye Separation: 0.05999999865889549
-          Stereo Focal Distance: 1
-          Swap Stereo Eyes: false
-          Value: false
-        Focal Point:
-          X: 0.17264798283576965
-          Y: -0.018090713769197464
-          Z: 0.05776974931359291
-        Focal Shape Fixed Size: true
-        Focal Shape Size: 0.05000000074505806
-        Invert Z Axis: false
-        Name: Orbit
-        Near Clip Distance: 0.009999999776482582
-        Pitch: 0.21039848029613495
-        Target Frame: <Fixed Frame>
-        Value: Orbit (rviz)
-        Yaw: 0.1653897762298584
-      - Class: rviz_default_plugins/Orbit
-        Distance: 0.6256626844406128
-        Enable Stereo Rendering:
-          Stereo Eye Separation: 0.05999999865889549
-          Stereo Focal Distance: 1
-          Swap Stereo Eyes: false
-          Value: false
-        Focal Point:
-          X: 0.17264798283576965
-          Y: -0.018090713769197464
-          Z: 0.05776974931359291
-        Focal Shape Fixed Size: true
-        Focal Shape Size: 0.05000000074505806
-        Invert Z Axis: false
-        Name: Orbit
-        Near Clip Distance: 0.009999999776482582
-        Pitch: 0.21039848029613495
-        Target Frame: <Fixed Frame>
-        Value: Orbit (rviz)
-        Yaw: 0.1653897762298584
-      - Class: rviz_default_plugins/Orbit
-        Distance: 0.6256626844406128
-        Enable Stereo Rendering:
-          Stereo Eye Separation: 0.05999999865889549
-          Stereo Focal Distance: 1
-          Swap Stereo Eyes: false
-          Value: false
-        Focal Point:
-          X: 0.17264798283576965
-          Y: -0.018090713769197464
-          Z: 0.05776974931359291
-        Focal Shape Fixed Size: true
-        Focal Shape Size: 0.05000000074505806
-        Invert Z Axis: false
-        Name: Orbit
-        Near Clip Distance: 0.009999999776482582
-        Pitch: 0.21039848029613495
-        Target Frame: <Fixed Frame>
-        Value: Orbit (rviz)
-        Yaw: 0.1653897762298584
-      - Class: rviz_default_plugins/Orbit
-        Distance: 0.6256626844406128
-        Enable Stereo Rendering:
-          Stereo Eye Separation: 0.05999999865889549
-          Stereo Focal Distance: 1
-          Swap Stereo Eyes: false
-          Value: false
-        Focal Point:
-          X: 0.17264798283576965
-          Y: -0.018090713769197464
-          Z: 0.05776974931359291
-        Focal Shape Fixed Size: true
-        Focal Shape Size: 0.05000000074505806
-        Invert Z Axis: false
-        Name: Orbit
-        Near Clip Distance: 0.009999999776482582
-        Pitch: 0.21039848029613495
-        Target Frame: <Fixed Frame>
-        Value: Orbit (rviz)
-        Yaw: 0.1653897762298584
+      Yaw: 0.08539846539497375
+    Saved: ~
 Window Geometry:
   Displays:
     collapsed: false

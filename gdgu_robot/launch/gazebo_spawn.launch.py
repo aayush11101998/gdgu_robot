@@ -13,16 +13,19 @@ import xacro
 def generate_launch_description():
 
     bridge_params = os.path.join(get_package_share_directory('gdgu_robot'),'config','gz_bridge.yaml')
-       
     default_world = os.path.join(
         get_package_share_directory('gdgu_robot'),'world','empty.sdf')    
-    
-    world = LaunchConfiguration('world')
 
     world_arg = DeclareLaunchArgument('world',
         default_value=default_world,
         description='World to load'
         )
+    
+    rviz_config_arg = DeclareLaunchArgument(
+        'rviz_config',
+        default_value=os.path.join(get_package_share_directory('gdgu_robot'),'rviz','gdgu_robot.rviz'),
+        description='Full path to the RViz configuration file'
+    )
 
     spawn_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
@@ -34,7 +37,9 @@ def generate_launch_description():
     gazebo_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('ros_gz_sim'), 'launch', 'gz_sim.launch.py')
-            ]))
+            ]),
+            launch_arguments={'world': LaunchConfiguration('world')}.items()
+    )
 
     spawn_robot = Node(package='ros_gz_sim', 
                        executable='create',
@@ -50,13 +55,22 @@ def generate_launch_description():
                                      f'config_file:={bridge_params}',],
                           output='screen'  
     )
+
+    rviz = Node(package='rviz2',
+                executable='rviz2',
+                name='rviz2',
+                arguments=['-d',LaunchConfiguration('rviz_config')],
+                output='screen'
+                )
     
     return LaunchDescription([
             world_arg,
-            spawn_launch,
+            rviz_config_arg,
+            ros_ign_bridge, 
+            spawn_robot,   
+            spawn_launch, 
+            rviz,     
             gazebo_launch,
-            spawn_robot,
-            ros_ign_bridge            
     ])
     
     
