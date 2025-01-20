@@ -12,14 +12,13 @@ import xacro
 
 def generate_launch_description():
 
-    bridge_params = os.path.join(get_package_share_directory('gdgu_robot'),'config','gz_bridge.yaml')
-    default_world = os.path.join(
-        get_package_share_directory('gdgu_robot'),'world','empty.sdf')    
+    bridge_params = os.path.join(get_package_share_directory('gdgu_robot'),'config','gz_bridge.yaml')  
 
     world_arg = DeclareLaunchArgument('world',
-        default_value=default_world,
+        default_value='empty.sdf',
         description='World to load'
         )
+    world_file = LaunchConfiguration('world')
     
     rviz_config_arg = DeclareLaunchArgument(
         'rviz_config',
@@ -38,14 +37,18 @@ def generate_launch_description():
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('ros_gz_sim'), 'launch', 'gz_sim.launch.py')
             ]),
-            launch_arguments={'world': LaunchConfiguration('world')}.items()
+            launch_arguments={
+            'gz_args': [f'-r -v 4 ', world_file],
+            'on_exit_shutdown': 'true'
+        }.items()
     )
 
     spawn_robot = Node(package='ros_gz_sim', 
                        executable='create',
-                       arguments=['-topic', 'robot_description',
+                       arguments=['-name', 'gdgu_robot',
+                                  '-topic', 'robot_description',
                                   '-name', 'gdgu_robot',
-                                  '-z','0.1'], 
+                                  '-z','0.25'], 
                        output= 'screen')
     
     ros_ign_bridge = Node(package='ros_gz_bridge',
@@ -53,8 +56,23 @@ def generate_launch_description():
                           arguments=['--ros-args',
                                      '-p',
                                      f'config_file:={bridge_params}',],
-                          output='screen'  
+                          output='screen',
+                          #remappings = [()]
     )
+
+    '''lwheelpub = Node(
+        package='tf2_ros',
+        executable = 'static_transform_publisher',
+        name = 'left_wheel_pub',
+        arguments = ['0', '0.155', '0', '0', '0', '-1.57', 'base_link', 'lfw_link'],
+    )
+
+    rwheelpub = Node(
+        package='tf2_ros',
+        executable = 'static_transform_publisher',
+        name = 'right_wheel_pub',
+        arguments = ['0', '-0.155', '0', '0', '0', '1.57', 'base_link', 'rfw_link']
+    )'''
 
     rviz = Node(package='rviz2',
                 executable='rviz2',
@@ -71,6 +89,8 @@ def generate_launch_description():
             spawn_launch, 
             rviz,     
             gazebo_launch,
+            #lwheelpub,
+            #rwheelpub
     ])
     
     

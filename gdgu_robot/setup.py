@@ -17,8 +17,8 @@ data_files.append(('share/' + package_name + '/launch', ['launch/gazebo_spawn.la
 data_files.append(('share/' + package_name + '/resource', [
 #     'resources/nav2_default_view.rviz',
 #     'resources/joint_names_Final_assembly_for gazebo.yaml',
-#     'resources/trial.yaml',
-#     'resources/nav2_namespaced_view.rviz',
+      'resource/gdgu_robot.sdf',
+      'resource/robot.xacro',
       'resource/gazebo_control.xacro',
       'resource/robot_body.xacro',
       'resource/gdgu_robot.urdf.xacro',

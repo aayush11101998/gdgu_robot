@@ -1,7 +1,35 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name = "gdgu_robot">
 
-    <xacro:include filename="robot_inertia.xacro"/>
+    <xacro:macro name="inertial_box" params="mass x y z *origin">
+        <inertial>
+            <xacro:insert_block name="origin"/>
+            <mass value="${mass}"/>
+            <inertia ixx="${(1/12) * mass * (y*y+z*z)}" ixy="0.0" ixz="0.0"
+                    iyy="${(1/12) * mass * (x*x+z*z)}" iyz="0.0"
+                    izz="${(1/12) * mass * (x*x+y*y)}" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="inertial_sphere" params="mass radius *origin">
+        <inertial>
+            <xacro:insert_block name="origin"/>
+            <mass value="${mass}"/>
+            <inertia ixx="${(2/5) * mass * (radius*radius)}" ixy="0.0" ixz="0.0"
+                    iyy="${(2/5) * mass * (radius*radius)}" iyz="0.0"
+                    izz="${(2/5) * mass * (radius*radius)}" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="inertial_cylinder" params="mass radius length *origin">
+        <inertial>
+            <xacro:insert_block name="origin"/>
+            <mass value="${mass}"/>
+            <inertia ixx="${(1/12) * mass * (3*radius*radius + length*length)}" ixy="0.0" ixz="0.0"
+                    iyy="${(1/12) * mass * (3*radius*radius + length*length)}" iyz="0.0"
+                    izz="${(1/2) * mass * (radius*radius)}" />
+        </inertial>
+    </xacro:macro>
     
 
     <xacro:property name="chassis_length" value="0.35"/>
@@ -80,7 +108,7 @@
                 <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
             </geometry>
         </collision>
-        <xacro:inertial_box mass="0.5" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}">
+        <xacro:inertial_box mass="${chassis_mass}" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}">
             <origin xyz="${chassis_length/2} 0 ${chassis_height/2}" rpy="0 0 0"/>
         </xacro:inertial_box>
     </link>
@@ -365,6 +393,34 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </xacro:inertial_cylinder>
     </link>
+
+    <gazebo>
+        <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+
+            <!--Wheel Info-->
+            <left_joint>left_wheel</left_joint>
+            <right_joint>right_wheel</right_joint> 
+            <wheel_separation>0.31</wheel_separation>
+            <wheel_radius>0.05</wheel_radius>
+            
+            <!--input-->
+            <odom_publish_frequency>100</odom_publish_frequency>
+            <topic>cmd_vel</topic>
+
+            <!--output "what needs to be shown in the output"-->
+            <odom_topic>odom</odom_topic>
+            <!--limits "set according to the motor requirements"-->
+            <max_linear_acceleration>1</max_linear_acceleration>
+        </plugin>
+
+        <plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher">
+            <topic>joint_states</topic>
+            <joint_name>left_wheel</joint_name>
+            <joint_name>right_wheel</joint_name>
+        </plugin>  
+
+
+    </gazebo>
 
 
 
