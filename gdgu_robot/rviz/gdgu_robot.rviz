@@ -67,55 +67,7 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_footprint:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        caster_wheel1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        caster_wheel2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        caster_wheel3_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        caster_wheel4_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        chassis_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        connector_cw1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        connector_cw2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        connector_cw3_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        connector_cw4_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -126,6 +78,11 @@ Visualization Manager:
           Show Trail: false
           Value: true
         rfw_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rotor_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -143,27 +100,13 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        base_footprint:
-          Value: true
         base_link:
           Value: true
-        caster_wheel1_link:
+        lfw_link:
           Value: true
-        caster_wheel2_link:
+        rfw_link:
           Value: true
-        caster_wheel3_link:
-          Value: true
-        caster_wheel4_link:
-          Value: true
-        chassis_link:
-          Value: true
-        connector_cw1_link:
-          Value: true
-        connector_cw2_link:
-          Value: true
-        connector_cw3_link:
-          Value: true
-        connector_cw4_link:
+        rotor_link:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -171,22 +114,13 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        base_link:
-          base_footprint:
-            {}
-          chassis_link:
-            caster_wheel1_link:
-              connector_cw1_link:
-                {}
-            caster_wheel2_link:
-              connector_cw2_link:
-                {}
-            caster_wheel3_link:
-              connector_cw3_link:
-                {}
-            caster_wheel4_link:
-              connector_cw4_link:
-                {}
+          base_link:
+            lfw_link:
+              {}
+            rfw_link:
+              {}
+            rotor_link:
+              {}
       Update Interval: 0
       Value: true
   Enabled: true

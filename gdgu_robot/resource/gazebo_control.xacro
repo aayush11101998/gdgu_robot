@@ -16,6 +16,8 @@
 
             <!--output "what needs to be shown in the output"-->
             <odom_topic>odom</odom_topic>
+            <frame_id>odom</frame_id>
+            <child_frame_id>base_link</child_frame_id>
             <!--limits "set according to the motor requirements"-->
             <max_linear_accelaration>1</max_linear_accelaration>
         </plugin>
@@ -24,7 +26,13 @@
             <topic>joint_states</topic>
             <joint_name>left_wheel</joint_name>
             <joint_name>right_wheel</joint_name>
+            <joint_name>rotor_joint</joint_name>
         </plugin>  
+
+       <!-- <plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher">
+            <topic>stepper_joint_states</topic>
+            <joint_name>rotor_joint</joint_name>
+        </plugin> -->
 
 
     </gazebo>

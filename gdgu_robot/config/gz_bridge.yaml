@@ -24,7 +24,7 @@
 - ros_topic_name: "tf"
   gz_topic_name: "tf"
   ros_type_name: "tf2_msgs/msg/TFMessage"
-  gz_type_name: "gz.msgs.Pose_V"
+  gz_type_name: "gz.msgs.Pose"
   direction: GZ_TO_ROS
 
 #for cmd_vel DiffDrive Plugin
@@ -34,3 +34,16 @@
   gz_type_name: "gz.msgs.Twist"
   direction: ROS_TO_GZ
 
+#for ultrasonic
+- ros_topic_name: "ultrasonic_sensor"
+  gz_topic_name: "ultrasonic_sensor"
+  ros_type_name: "sensor_msgs/msg/Range"
+  gz_type_name: "gz.msgs.LaserScan"
+  direction: BIDIRECTIONAL
+
+#for jointstatepublisher Plugin for stepper motor
+#- ros_topic_name: "stepper_joint_states"
+#  gz_topic_name: "stepper_joint_states"
+#  ros_type_name: "sensor_msgs/msg/JointState"
+#  gz_type_name: "gz.msgs.Model"
+#  direction: GZ_TO_ROS

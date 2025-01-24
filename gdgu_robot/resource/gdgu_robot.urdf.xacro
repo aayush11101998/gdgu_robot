@@ -3,4 +3,5 @@
 
     <xacro:include filename="robot_body.xacro"/>
     <xacro:include filename="gazebo_control.xacro"/>
+    <xacro:include filename="ultrasonic.xacro"/>
 </robot>

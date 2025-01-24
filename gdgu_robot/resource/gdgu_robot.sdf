@@ -2,15 +2,15 @@
   <model name='gdgu_robot'>
     <link name='base_link'>
       <inertial>
-        <pose>-0.002704918032786857 0 -0.01131147540983607 0 0 0</pose>
-        <mass>2.4399999999999999</mass>
+        <pose>0.0422115384615384 0 -0.01259615384615384 0 0 0</pose>
+        <mass>1.04</mass>
         <inertia>
-          <ixx>0.020986369945355181</ixx>
+          <ixx>0.01051322371794872</ixx>
           <ixy>0</ixy>
-          <ixz>-6.9344262295081995e-05</ixz>
-          <iyy>0.029843517486338782</iyy>
+          <ixz>-0.0012019711538461531</ixz>
+          <iyy>0.038237637179487208</iyy>
           <iyz>0</iyz>
-          <izz>0.050647080874316908</izz>
+          <izz>0.048496013461538499</izz>
         </inertia>
       </inertial>
       <collision name='base_link_fixed_joint_lump__chassis_link_collision'>
@@ -140,6 +140,22 @@
             <radius>0.0050000000000000001</radius>
           </cylinder>
         </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__stepper_link_collision_9'>
+        <pose>0.165 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.02 0.01 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
       </collision>
       <visual name='base_link_fixed_joint_lump__chassis_link_visual'>
         <pose>0 0 -0.009000000000000001 0 0 0</pose>
@@ -273,6 +289,125 @@
           <ambient>0 0 0 1</ambient>
         </material>
       </visual>
+      <visual name='base_link_fixed_joint_lump__stepper_link_visual_9'>
+        <pose>0.165 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.02 0.02 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+          <diffuse>0.125 0.25 1 1</diffuse>
+          <ambient>0.125 0.25 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='rotor_joint' type='revolute'>
+      <pose relative_to='base_link'>0.165 0 0.01 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>rotor_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.65449999999999997</lower>
+          <upper>0.65449999999999997</upper>
+          <effort>1</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rotor_link'>
+      <pose relative_to='rotor_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>1.447866287715299e-05 -0.01818182971156783 -0.01727272150785154 0 0 0</pose>
+        <mass>0.11</mass>
+        <inertia>
+          <ixx>0.00051090616456135054</ixx>
+          <ixy>2.8969924449557942e-09</ixy>
+          <ixz>-2.6912177539044742e-06</ixz>
+          <iyy>0.0038875846516195629</iyy>
+          <iyz>-5.4561280044453713e-06</iyz>
+          <izz>0.0038850022210399661</izz>
+        </inertia>
+      </inertial>
+      <collision name='rotor_link_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.01</length>
+            <radius>0.0050000000000000001</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <collision name='rotor_link_fixed_joint_lump__ultrasonic_link_collision_1'>
+        <pose>0 -0.02 0 1.57 -5.551115123125783e-17 1.57</pose>
+        <geometry>
+          <box>
+            <size>0.045 0.02 0.015</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='rotor_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.01</length>
+            <radius>0.0050000000000000001</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <diffuse>1 0 0 1</diffuse>
+          <ambient>1 0 0 1</ambient>
+        </material>
+      </visual>
+      <visual name='rotor_link_fixed_joint_lump__ultrasonic_link_visual_1'>
+        <pose>0 -0.02 0 1.57 -5.551115123125783e-17 1.57</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.0004 0.0009</scale>
+            <uri>package://gdgu_robot/meshes/ULTRASONIC_INFRARED.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.125 0.25 1 1</diffuse>
+          <ambient>0.125 0.25 1 1</ambient>
+        </material>
+      </visual>
+      <sensor name='ultrasonic' type='gpu_lidar'>
+        <update_rate>5</update_rate>
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+        <topic>ultrasonic_sensor</topic>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>1</samples>
+              <resolution>1</resolution>
+              <min_angle>0</min_angle>
+              <max_angle>15</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.029999999999999999</min>
+            <max>0.40000000000000002</max>
+            <resolution>0.02</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.10000000000000001</mean>
+            <stddev>0.0050000000000000001</stddev>
+          </noise>
+        </ray>
+        <pose>0.0498805 -0.0200397 0.15004 1.57 -5.55112e-17 1.57</pose>
+      </sensor>
     </link>
     <joint name='left_wheel' type='revolute'>
       <pose relative_to='base_link'>0 0.155 0 -1.570796326794896 0 0</pose>
@@ -410,12 +545,15 @@
       <odom_publish_frequency>100</odom_publish_frequency>
       <topic>cmd_vel</topic>
       <odom_topic>odom</odom_topic>
-      <max_linear_acceleration>1</max_linear_acceleration>
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_link</child_frame_id>
+      <max_linear_accelaration>1</max_linear_accelaration>
     </plugin>
     <plugin name='gz::sim::systems::JointStatePublisher' filename='gz-sim-joint-state-publisher-system'>
       <topic>joint_states</topic>
       <joint_name>left_wheel</joint_name>
       <joint_name>right_wheel</joint_name>
+      <joint_name>rotor_joint</joint_name>
     </plugin>
     <frame name='base_footprint_joint' attached_to='base_link'>
       <pose>0 0 0 0 -0 0</pose>
@@ -453,6 +591,18 @@
       <pose>0.305 -0.125 -0.03 0 -0 0</pose>
     </frame>
     <frame name='caster_wheel4_link' attached_to='caster_wheel4_joint'/>
+    <frame name='stepper_joint' attached_to='chassis_link'>
+      <pose>0.34 0 0.01 0 -0 0</pose>
+    </frame>
+    <frame name='stepper_link' attached_to='stepper_joint'/>
+    <frame name='ray_joint' attached_to='ultrasonic_link'>
+      <pose>0 0.15 0.05 0 -0 0</pose>
+    </frame>
+    <frame name='ray_link' attached_to='ray_joint'/>
+    <frame name='ultrasonic_joint' attached_to='rotor_link'>
+      <pose>0 -0.02 0 1.57 -0 1.57</pose>
+    </frame>
+    <frame name='ultrasonic_link' attached_to='ultrasonic_joint'/>
     <frame name='chassis_joint' attached_to='base_link'>
       <pose>-0.175 0 -0.01 0 -0 0</pose>
     </frame>

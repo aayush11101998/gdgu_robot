@@ -22,10 +22,12 @@ data_files.append(('share/' + package_name + '/resource', [
       'resource/gazebo_control.xacro',
       'resource/robot_body.xacro',
       'resource/gdgu_robot.urdf.xacro',
-      'resource/robot_inertia.xacro'
+      'resource/robot_inertia.xacro',
+      'resource/ultrasonic.xacro'
 ])) 
-data_files.append(('share/' + package_name + '/meshes', ['meshes/chassis.STL']))
-data_files.append(('share/' + package_name + '/meshes', ['meshes/fixed_wheel.STL']))
+data_files.append(('share/' + package_name + '/meshes', ['meshes/chassis.STL',
+        'meshes/fixed_wheel.STL',
+        'meshes/ULTRASONIC_INFRARED.STL']))
 data_files.append(('share/' + package_name, ['package.xml']))
 data_files.append(('share/' + package_name + '/config', ['config/gz_bridge.yaml']))
 #data_files.append(('share/' + package_name + '/world', ['world/urdf/Pipeline.sdf']))
