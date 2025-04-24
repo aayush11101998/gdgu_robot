@@ -35,11 +35,11 @@
   direction: ROS_TO_GZ
 
 #for ultrasonic
-- ros_topic_name: "ultrasonic_sensor"
-  gz_topic_name: "ultrasonic_sensor"
-  ros_type_name: "sensor_msgs/msg/Range"
+- ros_topic_name: "scan"
+  gz_topic_name: "scan"
+  ros_type_name: "sensor_msgs/msg/LaserScan"
   gz_type_name: "gz.msgs.LaserScan"
-  direction: BIDIRECTIONAL
+  direction: GZ_TO_ROS
 
 #for jointstatepublisher Plugin for stepper motor
 #- ros_topic_name: "stepper_joint_states"

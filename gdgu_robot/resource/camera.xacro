@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<robot name="gdgu_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:include filename="robot_inertia.xacro"/>
+    
+    <joint name="camera_supp_joint" type="fixed">
+        <parent link="chassis_link"/>
+        <child link="cam_support_link"/>
+        <origin xyz="0.30 0.0 0.6"/>
+    </joint>
+
+    <link name="cam_support_link">
+        <visual>
+            <geometry>
+                <box size="0.020 0.020 1.20"/>
+            </geometry>    
+            <material>gazebo/White</material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.010 0.010 1.20"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="1" x="0.1" y="0.1" z="1.2">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_box>  
+    </link>
+
+    <joint name="camera_joint" type="fixed">
+        <parent link="cam_support_link"/>
+        <child link="camera_link"/>
+        <origin xyz="0.0 0.0 0" rpy="0.0 0.0 0.0"/>
+    </joint>
+    <link name="camera_link"> 
+    </link>
+
+    <gazebo reference="camera_link">
+        <material>Gazebo/Red</material>
+
+        <sensor name="camera" type="camera">
+            <pose> 0 0 0 0 0 0</pose>
+            <update_rate>10</update_rate>
+            <always_on>1</always_on>        
+            <visualize>1</visualize>
+            <camera>
+                <horizontal_fov>1.089</horizontal_fov>
+                <image>
+                    <format>R8G8B8</format>
+                    <width>640</width>
+                    <height>480</height>
+                </image>    
+                <clip>
+                    <near>0.05</near>
+                    <far>8.0</far>
+                </clip>
+                
+            </camera>
+            
+        </sensor>
+        
+    </gazebo>
+
+
+</robot>

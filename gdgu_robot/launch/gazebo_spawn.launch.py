@@ -15,9 +15,10 @@ def generate_launch_description():
     bridge_params = os.path.join(get_package_share_directory('gdgu_robot'),'config','gz_bridge.yaml')  
 
     world_arg = DeclareLaunchArgument('world',
-        default_value='empty.sdf',
+        default_value=os.path.join(get_package_share_directory('gdgu_robot'),'world','obstacles.sdf'),
         description='World to load'
         )
+    
     world_file = LaunchConfiguration('world')
     
     rviz_config_arg = DeclareLaunchArgument(
@@ -56,20 +57,20 @@ def generate_launch_description():
                           arguments=['--ros-args',
                                      '-p',
                                      f'config_file:={bridge_params}',],
-                          output='screen',
-                          #remappings = [()]
+                          output='screen',                     
     )
 
-    '''lwheelpub = Node(
+    '''odom_pub = Node(
         package='tf2_ros',
-        executable = 'static_transform_publisher',
-        name = 'left_wheel_pub',
-        arguments = ['0', '0.155', '0', '0', '0', '-1.57', 'base_link', 'lfw_link'],
-    )
+        executable = '',
+        name = 'odom',
+        arguments = ['0', '0', '0', '0', '0', '0', 'odom', 'base_link'],
+        parameters= ['publish_frequency:=100']
+    )'''
 
-    rwheelpub = Node(
+    '''rwheelpub = Node(
         package='tf2_ros',
-        executable = 'static_transform_publisher',
+        executable = '',
         name = 'right_wheel_pub',
         arguments = ['0', '-0.155', '0', '0', '0', '1.57', 'base_link', 'rfw_link']
     )'''

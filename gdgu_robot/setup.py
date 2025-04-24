@@ -23,7 +23,10 @@ data_files.append(('share/' + package_name + '/resource', [
       'resource/robot_body.xacro',
       'resource/gdgu_robot.urdf.xacro',
       'resource/robot_inertia.xacro',
-      'resource/ultrasonic.xacro'
+      'resource/ultrasonic.xacro',
+      'resource/camera.xacro',
+#     'resource/gdgu_harware.xacro',
+      'resource/robot_hardware.urdf.xacro'
 ])) 
 data_files.append(('share/' + package_name + '/meshes', ['meshes/chassis.STL',
         'meshes/fixed_wheel.STL',
@@ -36,6 +39,7 @@ data_files.append(('share/' + package_name + '/config', ['config/gz_bridge.yaml'
 #data_files.append(('share/' + package_name + '/world', ['world/urdf/swimming robot_assembly_SLDPRT.urdf']))
 data_files.append(('share/' + package_name + '/rviz', ['rviz/gdgu_robot.rviz']))
 data_files.append(('share/' + package_name + '/world', ['world/empty.sdf']))
+data_files.append(('share/' + package_name + '/world', ['world/obstacles.sdf']))
 setup(
     name=package_name,
     version='0.0.0',

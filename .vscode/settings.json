@@ -1,14 +1,10 @@
 {
     "python.autoComplete.extraPaths": [
-        "/home/aayush/vats_5160727/build/gdgu_robot",
-        "/home/aayush/vats_5160727/install/gdgu_robot/lib/python3.10/site-packages",
         "/opt/ros/humble/lib/python3.10/site-packages",
         "/opt/ros/humble/local/lib/python3.10/dist-packages",
         "/home/aayush/home/aayush/.local/lib/python3.8/site-packages"
     ],
     "python.analysis.extraPaths": [
-        "/home/aayush/vats_5160727/build/gdgu_robot",
-        "/home/aayush/vats_5160727/install/gdgu_robot/lib/python3.10/site-packages",
         "/opt/ros/humble/lib/python3.10/site-packages",
         "/opt/ros/humble/local/lib/python3.10/dist-packages",
         "/home/aayush/home/aayush/.local/lib/python3.8/site-packages"
