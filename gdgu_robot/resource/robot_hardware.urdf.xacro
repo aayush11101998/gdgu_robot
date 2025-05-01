@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name = "gdgu_robot">
-
-    <xacro:include filename="gdgu_hardware.xacro"/>
-    <xacro:include filename="gazebo_control.xacro"/>
-    
-</robot>
